@@ -1,5 +1,7 @@
 import PySimpleGUI as sg
 import qrcode
+from qrcode.image.styledpil import StyledPilImage
+from qrcode.image.styles.moduledrawers import VerticalBarsDrawer,RoundedModuleDrawer,HorizontalBarsDrawer,SquareModuleDrawer,GappedSquareModuleDrawer,CircleModuleDrawer
 qr = qrcode.QRCode(
     version=1,
     error_correction=qrcode.constants.ERROR_CORRECT_L,
@@ -76,7 +78,7 @@ while True:
         #img = qrcode.make(web)
         qr.add_data(web)
         qr.make(fit=True)
-        img = qr.make_image()
+        img = qr.make_image(image_factory=StyledPilImage, module_drawer=GappedSquareModuleDrawer())
         #type(img)  # qrcode.image.pil.PilImage
         img.save("some_file.png")
         img.show()
@@ -114,8 +116,7 @@ END:VCARD
 """.format(ln,fn,fn,ln,st,city,state,zi,coun,tel,email,url)
         qr.add_data(template)
         qr.make(fit=True)
-        img = qr.make_image()
-        #type(img)  # qrcode.image.pil.PilImage
+        img = qr.make_image(image_factory=StyledPilImage, module_drawer=GappedSquareModuleDrawer())
         img.save("some_file.png")
         img.show()
         
