@@ -1,8 +1,13 @@
 import PySimpleGUI as sg
 import qrcode
+qr = qrcode.QRCode(
+    version=1,
+    error_correction=qrcode.constants.ERROR_CORRECT_L,
+    box_size=10,
+    border=4
+)
 
 sg.theme('LightGreen')
-
 
 layout1 = [
           [sg.Text('Select Type', size=(20, 1), justification='center')],
@@ -68,13 +73,21 @@ while True:
             
     elif event == 'webok':
         web = values['web'];
-        img = qrcode.make(web)
-        type(img)  # qrcode.image.pil.PilImage
+        #img = qrcode.make(web)
+        qr.add_data(web)
+        qr.make(fit=True)
+        img = qr.make_image()
+        #type(img)  # qrcode.image.pil.PilImage
         img.save("some_file.png")
         img.show()
 
         window[f'-COL3-'].update(visible=False)
         window[f'-COL1-'].update(visible=True)
+        
+           # 要轉換成 QRCode 的文字
+          # 根據參數製作為 QRCode 物件
+
+      # 產生 QRCode 圖片
         
     elif event == 'vcok':
         fn = values['fn']
@@ -88,7 +101,6 @@ while True:
         url = values['url']
         zi = values['zi']
         
-        
         template = """
 BEGIN:VCARD
 VERSION:3.0
@@ -100,8 +112,10 @@ EMAIL;WORK;INTERNET:{}
 URL:{}
 END:VCARD
 """.format(ln,fn,fn,ln,st,city,state,zi,coun,tel,email,url)
-        img = qrcode.make(template)
-        type(img)  # qrcode.image.pil.PilImage
+        qr.add_data(template)
+        qr.make(fit=True)
+        img = qr.make_image()
+        #type(img)  # qrcode.image.pil.PilImage
         img.save("some_file.png")
         img.show()
         
