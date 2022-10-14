@@ -58,20 +58,20 @@ while True:
     if event == 'Exit' or event == sg.WIN_CLOSED:
         break
     elif event == 'text':
-        window[f'-COL1-'].update(visible=False)
-        window[f'-COL3-'].update(visible=True)
+        window['-COL1-'].update(visible=False)
+        window['-COL3-'].update(visible=True)
         
     elif event == 'cancel2':
-        window[f'-COL2-'].update(visible=False)
-        window[f'-COL1-'].update(visible=True)
+        window['-COL2-'].update(visible=False)
+        window['-COL1-'].update(visible=True)
 
     elif event == 'cancel3':
-        window[f'-COL3-'].update(visible=False)
-        window[f'-COL1-'].update(visible=True)
+        window['-COL3-'].update(visible=False)
+        window['-COL1-'].update(visible=True)
         
     elif event == 'vcard':
-        window[f'-COL1-'].update(visible=False)
-        window[f'-COL2-'].update(visible=True)
+        window['-COL1-'].update(visible=False)
+        window['-COL2-'].update(visible=True)
             
     elif event == 'webok':
         web = values['web'];
@@ -83,8 +83,8 @@ while True:
         img.save("some_file.png")
         img.show()
 
-        window[f'-COL3-'].update(visible=False)
-        window[f'-COL1-'].update(visible=True)
+        window['-COL3-'].update(visible=False)
+        window['-COL1-'].update(visible=True)
         
            # 要轉換成 QRCode 的文字
           # 根據參數製作為 QRCode 物件
@@ -120,7 +120,7 @@ END:VCARD
         img.save("some_file.png")
         img.show()
         
-        window[f'-COL2-'].update(visible=False)
-        window[f'-COL1-'].update(visible=True)
+        window['-COL2-'].update(visible=False)
+        window['-COL1-'].update(visible=True)
         
 window.close()
