@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Oct 17 09:45:53 2022
+Created on Fri Nov 18 09:47:10 2022
 @author: Paddy
 install qrcode pillow pysimplegui
 """
@@ -142,27 +142,27 @@ while True:
         qr.make(fit=True)
         if values["stylew_default"] == True:
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=SquareModuleDrawer(),embeded_image_path=path)
-            img.save("some_file.png")
+            img.save("web.png")
             img.show()
         elif values["stylew_2"] == True:
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=GappedSquareModuleDrawer(),embeded_image_path=path)
-            img.save("some_file.png")
+            img.save("web.png")
             img.show()
         elif values["stylew_3"] == True:
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=CircleModuleDrawer(),embeded_image_path=path)
-            img.save("some_file.png")
+            img.save("web.png")
             img.show()
         elif values["stylew_4"] == True:
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=RoundedModuleDrawer(),embeded_image_path=path)
-            img.save("some_file.png")
+            img.save("web.png")
             img.show()
         elif values["stylew_5"] == True:
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=VerticalBarsDrawer(),embeded_image_path=path)
-            img.save("some_file.png")
+            img.save("web.png")
             img.show()
         elif values["stylew_6"] == True:
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=HorizontalBarsDrawer(),embeded_image_path=path)
-            img.save("some_file.png")
+            img.save("web.png")
             img.show()
         window['-COL3-'].update(visible=False)
         window['-COL1-'].update(visible=True)
@@ -175,27 +175,27 @@ while True:
         qr.make(fit=True)
         if values["stylet_default"] == True:
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=SquareModuleDrawer(),embeded_image_path=path)
-            img.save("some_file.png")
+            img.save("text.png")
             img.show()
         elif values["stylet_2"] == True:
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=GappedSquareModuleDrawer(),embeded_image_path=path)
-            img.save("some_file.png")
+            img.save("text.png")
             img.show()
         elif values["stylet_3"] == True:
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=CircleModuleDrawer(),embeded_image_path=path)
-            img.save("some_file.png")
+            img.save("text.png")
             img.show()
         elif values["stylet_4"] == True:
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=RoundedModuleDrawer(),embeded_image_path=path)
-            img.save("some_file.png")
+            img.save("text.png")
             img.show()
         elif values["stylet_5"] == True:
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=VerticalBarsDrawer(),embeded_image_path=path)
-            img.save("some_file.png")
+            img.save("text.png")
             img.show()
         elif values["stylet_6"] == True:
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=HorizontalBarsDrawer(),embeded_image_path=path)
-            img.save("some_file.png")
+            img.save("text.png")
             img.show()
         window['-COL4-'].update(visible=False)
         window['-COL1-'].update(visible=True)
@@ -228,29 +228,28 @@ END:VCARD
         qr.make(fit=True)
         if values["stylev_default"] == True:
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=SquareModuleDrawer(),embeded_image_path=path)
-            img.save("some_file.png")
+            img.save("contact.png")
             img.show()
         elif values["stylev_2"] == True:
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=GappedSquareModuleDrawer(),embeded_image_path=path)
-            img.save("some_file.png")
+            img.save("contact.png")
             img.show()
         elif values["stylev_3"] == True:
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=CircleModuleDrawer(),embeded_image_path=path)
-            img.save("some_file.png")
+            img.save("contact.png")
             img.show()
         elif values["stylev_4"] == True:
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=RoundedModuleDrawer(),embeded_image_path=path)
-            img.save("some_file.png")
+            img.save("contact.png")
             img.show()
         elif values["stylev_5"] == True:
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=VerticalBarsDrawer(),embeded_image_path=path)
-            img.save("some_file.png")
+            img.save("contact.png")
             img.show()
         elif values["stylev_6"] == True:
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=HorizontalBarsDrawer(),embeded_image_path=path)
-            img.save("some_file.png")
+            img.save("contact.png")
             img.show()
         window['-COL2-'].update(visible=False)
         window['-COL1-'].update(visible=True)
-             
 window.close()
