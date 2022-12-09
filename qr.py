@@ -10,16 +10,16 @@ import qrcode
 import webbrowser
 from qrcode.image.styledpil import StyledPilImage
 from qrcode.image.styles.moduledrawers import VerticalBarsDrawer,RoundedModuleDrawer,HorizontalBarsDrawer,SquareModuleDrawer,GappedSquareModuleDrawer,CircleModuleDrawer
-qr = qrcode.QRCode(
+qr = qrcode.QRCode( #設定qrcode參數
     version=1,
     error_correction=qrcode.constants.ERROR_CORRECT_H,
     box_size=10,
     border=4
 )
 
-sg.theme('Dark')
+sg.theme('Dark') #視窗主題設為黑色
 
-layout1 = [
+layout1 = [ #主選單
           [sg.Text('Select Type', size=(20, 1), justification='center')],
           [sg.B('Hyperlink', 
            size=(10, 1),key='toweb',enable_events=True,button_color='red'),
@@ -30,9 +30,9 @@ layout1 = [
            sg.B('View Author',
            size=(10, 1),key='view',enable_events=True,button_color='gray')],
           [sg.Exit()],
-
     ]
-layout2 = [ #vcard
+
+layout2 = [ #vcard選單
         [sg.Text('Input Your Information', size=(40, 1), justification='center')],
         [sg.Text('First Name', size=(10, 1)),sg.InputText(size=(30,1),key='fn')],
         [sg.Text('Last Name', size=(10, 1)),sg.Input(size=(30,1),key='ln')],
@@ -56,7 +56,7 @@ layout2 = [ #vcard
          sg.B('Cancel',size=(10, 1),key='cancel2',enable_events=True,button_color='gray')]
     ]
 
-layout3 = [ #web
+layout3 = [ #web選單
         [sg.Text('Input Your Website', size=(40, 1), justification='center')],
         [sg.Text('Website', size=(10, 1)),sg.I(size=(30,1),key='web',default_text="https://")],
         [sg.Text('Choose Your Style', size=(40, 1), justification='center')],
@@ -70,7 +70,7 @@ layout3 = [ #web
         [sg.B('Generate',size=(20, 1),key='webok',enable_events=True,button_color='red'),
          sg.B('Cancel',size=(10, 1),key='cancel3',enable_events=True,button_color='gray')]
     ]
-layout4 = [ #text
+layout4 = [ #text選單
         [sg.Text('Input Your Text', size=(40, 1), justification='center')],
         [sg.Text('Text', size=(10, 1)),sg.I(size=(30,1),key='text')],
         [sg.Text('Choose Your Style', size=(40, 1), justification='center')],
@@ -86,7 +86,7 @@ layout4 = [ #text
     ]
 
 
-
+#初始設定只顯示主選單
 layout = [[sg.Column(layout1, key='-COL1-'), sg.Column(layout2, visible=False, key='-COL2-'), 
            sg.Column(layout3, visible=False, key='-COL3-'), sg.Column(layout4, visible=False, key='-COL4-')],
           [sg.Text('A Paddy Lee Production', size=(20, 1), justification='center')]]
@@ -104,7 +104,7 @@ while True:
     event, values = window.read()
     if event == 'Exit' or event == sg.WIN_CLOSED:
         break
-    
+    #控制各選單顯示或隱藏
     elif event == 'tovcard':
         window['-COL1-'].update(visible=False)
         window['-COL2-'].update(visible=True)
@@ -134,12 +134,13 @@ while True:
         webbrowser.open("https://youtu.be/dQw4w9WgXcQ")
         sg.popup("you got rickroll'd",title="lol")
 
-
+    #製作超連結
     elif event == 'webok':
-        web = values['web'];
-        path = r"{}".format(values['w_in']);
+        web = values['web']; #讀取輸入值
+        path = r"{}".format(values['w_in']); #嵌入圖片路徑
         qr.add_data(web)
         qr.make(fit=True)
+        #選取樣式
         if values["stylew_default"] == True:
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=SquareModuleDrawer(),embeded_image_path=path)
             img.save("web.png")
@@ -167,7 +168,7 @@ while True:
         window['-COL3-'].update(visible=False)
         window['-COL1-'].update(visible=True)
 
-        
+    #製作文字
     elif event == 'textok':
         web = values['text'];
         path = r"{}".format(values['t_in']);
@@ -199,7 +200,8 @@ while True:
             img.show()
         window['-COL4-'].update(visible=False)
         window['-COL1-'].update(visible=True)
-
+    
+    #製作vcard
     elif event == 'vcok':
         path = r"{}".format(values['v_in']);
         fn = values['fn']
@@ -212,7 +214,7 @@ while True:
         email = values['email']
         url = values['url']
         zi = values['zi']
-        
+        #vcard格式
         template = """
 BEGIN:VCARD
 VERSION:3.0
